@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import Navbar from "./Navbar/Navbar";
+import MainRouters from "./routers/MainRouters";
 
 const App = () => {
   return (
-    <div>App</div>
-  )
-}
+    <div>
+      <Navbar />
+      <MainRouters />
+    </div>
+  );
+};
 
-export default App
+export default App;
