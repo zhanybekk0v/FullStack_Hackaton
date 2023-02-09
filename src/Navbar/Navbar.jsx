@@ -143,7 +143,7 @@ export default function Navbar() {
         </IconButton>
         <p>Messages</p>
       </MenuItem>
-      <MenuItem>
+      {/* <MenuItem>
         <IconButton
           size="large"
           aria-label="show 17 new notifications"
@@ -152,10 +152,10 @@ export default function Navbar() {
           <Badge badgeContent={17} color="error">
             <NotificationsIcon />
           </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
+        </IconButton> */}
+        {/* <p>Notifications</p> */}
+      {/* </MenuItem>
+      <MenuItem onClick={handleProfileMenuOpen}> */}
         <IconButton
           size="large"
           aria-label="account of current user"
@@ -166,15 +166,15 @@ export default function Navbar() {
           <AccountCircle />
         </IconButton>
         <p>Profile</p>
-      </MenuItem>
+      {/* </MenuItem> */}
     </Menu>
   );
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
+      <AppBar  position="static">
+        <Toolbar sx={{display: 'flex' , justifyContent: 'space-between'}}>
+          {/* <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -182,16 +182,16 @@ export default function Navbar() {
             sx={{ mr: 2 }}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            MUI
+            Rentik
           </Typography>
-          <Search>
+          <Search >
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -211,7 +211,7 @@ export default function Navbar() {
                 <LocalGroceryStoreIcon />
               </Badge>
             </IconButton>
-            <IconButton
+            {/* <IconButton
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
@@ -219,8 +219,8 @@ export default function Navbar() {
               <Badge badgeContent={4} color="error">
                 <MailIcon />
               </Badge>
-            </IconButton>
-            <IconButton
+            </IconButton> */}
+            {/* <IconButton
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
@@ -228,7 +228,7 @@ export default function Navbar() {
               <Badge badgeContent={17} color="error">
                 <NotificationsIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
             <IconButton
               size="large"
               edge="end"
