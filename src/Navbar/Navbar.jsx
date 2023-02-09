@@ -16,6 +16,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
+import { width } from "@mui/system";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -103,7 +104,7 @@ export default function Navbar() {
     </Menu>
   );
   <div
-    class="item carousel-img active"
+    class="item carousel-img active "
     style="background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url(/img/home/slider/slider_0.jpg)"
   ></div>;
   const mobileMenuId = "primary-search-account-menu-mobile";
@@ -135,26 +136,7 @@ export default function Navbar() {
         </IconButton>
         <p>Cart</p>
       </MenuItem>
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
+
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -172,30 +154,36 @@ export default function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" color="default">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
+          <Box
+            sx={{
+              marginRight: "20px",
+            }}
           >
-            <MenuIcon />
-          </IconButton>
+            <img
+              style={{
+                width: "40px",
+                height: "40px",
+              }}
+              src="https://rentik.kg/img/logo/rentik_logo_60.png"
+            />
+          </Box>
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            MUI
+            RENTIK
           </Typography>
+
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
+              //   sx={{ paddingLeft: "100px", textAlign: "start" }}
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
             />
@@ -209,24 +197,6 @@ export default function Navbar() {
             >
               <Badge badgeContent={4} color="error">
                 <LocalGroceryStoreIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
-            >
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
               </Badge>
             </IconButton>
             <IconButton
