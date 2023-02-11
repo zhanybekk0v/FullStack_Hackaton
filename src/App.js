@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "./Footer/Footer";
 import Navbar from "./Navbar/Navbar";
 import MainRouters from "./routers/MainRouters";
 
@@ -7,6 +8,7 @@ const App = () => {
     <div>
       <Navbar />
       <MainRouters />
+      <Footer/>
     </div>
   );
 };

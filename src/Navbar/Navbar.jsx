@@ -20,6 +20,7 @@ import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import { Link, useNavigate } from "react-router-dom";
 import { InputLabel, NativeSelect, FormControl, Select } from "@mui/material";
 
+
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -236,12 +237,14 @@ export default function Navbar() {
           >
             RENTIK
           </Typography>
+
           <Search>
             <SearchIconWrapper>
               <SearchIcon sx={{ color: 'white' }} />
             </SearchIconWrapper>
             <StyledInputBase
               sx={{ backgroundColor: '#d2d2d2', color: 'black', borderRadius: '30px', boxShadow: '2px 1px 7px grey', paddingRight: '50px' }}
+
               //   sx={{ paddingLeft: "100px", textAlign: "start" }}
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
@@ -274,6 +277,7 @@ export default function Navbar() {
 
             <IconButton
               size="large"
+
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
