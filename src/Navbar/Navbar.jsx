@@ -12,10 +12,13 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import InventoryIcon from '@mui/icons-material/Inventory';
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
+import { Link, useNavigate } from "react-router-dom";
+import { InputLabel, NativeSelect, FormControl, Select } from "@mui/material";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -58,14 +61,22 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Navbar() {
+
+  const navigate = useNavigate()
+
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEm, setAnchorEm] = React.useState(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
+  const isMenuOpen2 = Boolean(anchorEm);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
+  };
+  const handleProfileMenuOpen2 = (event) => {
+    setAnchorEm(event.currentTarget);
   };
 
   const handleMobileMenuClose = () => {
@@ -74,6 +85,7 @@ export default function Navbar() {
 
   const handleMenuClose = () => {
     setAnchorEl(null);
+    setAnchorEm(null)
     handleMobileMenuClose();
   };
 
@@ -98,12 +110,46 @@ export default function Navbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <Link to='/login'>
+        <MenuItem onClick={handleMenuClose} sx={{ textDecoration: 'none' }}>Login</MenuItem>
+      </Link>
+      <Link to='/register'>
+        <MenuItem onClick={handleMenuClose}>Register</MenuItem>
+      </Link>
+      <MenuItem onClick={handleMenuClose}>LogOut</MenuItem>
+    </Menu>
+
+
+
+
+  );
+  const renderProduct = (
+    <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      id={menuId}
+      keepMounted
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      open={isMenuOpen2}
+      onClose={handleMenuClose}
+    >
+      <Link to='/products'>
+        <MenuItem onClick={handleMenuClose} sx={{ textDecoration: 'none' }}>Products</MenuItem>
+      </Link>
+      <Link to='/admin'>
+        <MenuItem onClick={handleMenuClose}>AddProduct</MenuItem>
+      </Link>
     </Menu>
   );
+
   <div
-    class="item carousel-img active"
+    class="item carousel-img active "
     style="background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url(/img/home/slider/slider_0.jpg)"
   ></div>;
   const mobileMenuId = "primary-search-account-menu-mobile";
@@ -123,39 +169,23 @@ export default function Navbar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      <Link to='/cart'>
+        <MenuItem >
+          <IconButton
+
+            size="large"
+            aria-label="account of current user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="inherit"
+          >
+
+            <LocalGroceryStoreIcon />
+          </IconButton>
+          <p>Cart</p>
+        </MenuItem>
+      </Link>
       <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <LocalGroceryStoreIcon />
-        </IconButton>
-        <p>Cart</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      {/* <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton> */}
-        {/* <p>Notifications</p> */}
-      {/* </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}> */}
         <IconButton
           size="large"
           aria-label="account of current user"
@@ -166,69 +196,82 @@ export default function Navbar() {
           <AccountCircle />
         </IconButton>
         <p>Profile</p>
-      {/* </MenuItem> */}
+      </MenuItem>
+      <MenuItem onClick={handleProfileMenuOpen2}>
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          <InventoryIcon />
+        </IconButton>
+        <p>Products</p>
+      </MenuItem>
     </Menu>
   );
-
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar  position="static">
-        <Toolbar sx={{display: 'flex' , justifyContent: 'space-between'}}>
-          {/* <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
+      <AppBar position="fixed" color="default">
+        <Toolbar>
+          <Box
+            sx={{
+              marginRight: "20px",
+            }}
           >
-            <MenuIcon />
-          </IconButton> */}
+            <img
+              style={{
+                width: "40px",
+                height: "40px",
+              }}
+              src="https://rentik.kg/img/logo/rentik_logo_60.png"
+            />
+          </Box>
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            Rentik
+            RENTIK
           </Typography>
-          <Search >
+          <Search>
             <SearchIconWrapper>
-              <SearchIcon />
+              <SearchIcon sx={{ color: 'white' }} />
             </SearchIconWrapper>
             <StyledInputBase
+              sx={{ backgroundColor: '#d2d2d2', color: 'black', borderRadius: '30px', boxShadow: '2px 1px 7px grey', paddingRight: '50px' }}
+              //   sx={{ paddingLeft: "100px", textAlign: "start" }}
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 3 }} />
+          <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: 'center' }}>
             <IconButton
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
             >
-              <Badge badgeContent={4} color="error">
-                <LocalGroceryStoreIcon />
+              <Badge color="error">
+                <Link to='/cart'>
+                  <LocalGroceryStoreIcon />
+                </Link>
               </Badge>
             </IconButton>
-            {/* <IconButton
+
+            <IconButton
               size="large"
               aria-label="show 4 new mails"
+              // aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen2}
               color="inherit"
             >
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton> */}
-            {/* <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton> */}
+              <InventoryIcon />
+            </IconButton>
+
             <IconButton
               size="large"
               edge="end"
@@ -257,6 +300,7 @@ export default function Navbar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+      {renderProduct}
     </Box>
   );
 }
