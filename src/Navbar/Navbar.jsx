@@ -9,16 +9,13 @@ import InputBase from "@mui/material/InputBase";
 import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import InventoryIcon from '@mui/icons-material/Inventory';
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import { Link, useNavigate } from "react-router-dom";
-import { InputLabel, NativeSelect, FormControl, Select } from "@mui/material";
+import { useAuth } from "../contexts/AuthContextProvider";
 
 
 const Search = styled("div")(({ theme }) => ({
@@ -62,8 +59,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Navbar() {
-
+  const { user, checkAuth , handleLogOut} = useAuth()
   const navigate = useNavigate()
+
+  React.useEffect(() => {
+    if (localStorage.getItem('tokens')) {
+      checkAuth()
+    }
+  }, [])
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEm, setAnchorEm] = React.useState(null)
@@ -117,7 +120,7 @@ export default function Navbar() {
       <Link to='/register'>
         <MenuItem onClick={handleMenuClose}>Register</MenuItem>
       </Link>
-      <MenuItem onClick={handleMenuClose}>LogOut</MenuItem>
+      <MenuItem onClick={() => {handleMenuClose(); handleLogOut()}}>LogOut</MenuItem>
     </Menu>
 
 
@@ -170,34 +173,20 @@ export default function Navbar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <Link to='/cart'>
+      <Link to='/cart' onClick={handleMenuClose}>
         <MenuItem >
           <IconButton
-
             size="large"
             aria-label="account of current user"
             aria-controls="primary-search-account-menu"
             aria-haspopup="true"
             color="inherit"
           >
-
             <LocalGroceryStoreIcon />
           </IconButton>
           <p>Cart</p>
         </MenuItem>
       </Link>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen2}>
         <IconButton
           size="large"
@@ -210,101 +199,111 @@ export default function Navbar() {
         </IconButton>
         <p>Products</p>
       </MenuItem>
+      <MenuItem onClick={handleProfileMenuOpen}>
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          <AccountCircle />
+        </IconButton>
+        <p>Profile</p>
+      </MenuItem>
     </Menu>
   );
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" color="default">
-        <Toolbar>
-          <Box
-            sx={{
-              marginRight: "20px",
-            }}
-          >
-            <img
-              style={{
-                width: "40px",
-                height: "40px",
+    <>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="fixed" color="default">
+          <Toolbar>
+            <Box
+              sx={{
+                marginRight: "20px",
               }}
-              src="https://rentik.kg/img/logo/rentik_logo_60.png"
-            />
-          </Box>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
-          >
-            RENTIK
-          </Typography>
-
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon sx={{ color: 'white' }} />
-            </SearchIconWrapper>
-            <StyledInputBase
-              sx={{ backgroundColor: '#d2d2d2', color: 'black', borderRadius: '30px', boxShadow: '2px 1px 7px grey', paddingRight: '50px' }}
-
-              //   sx={{ paddingLeft: "100px", textAlign: "start" }}
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
-          <Box sx={{ flexGrow: 3 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: 'center' }}>
-            <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
             >
-              <Badge color="error">
-                <Link to='/cart'>
-                  <LocalGroceryStoreIcon />
-                </Link>
-              </Badge>
-            </IconButton>
-
-            <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              // aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen2}
-              color="inherit"
+              <img
+                style={{
+                  width: "40px",
+                  height: "40px",
+                }}
+                src="https://rentik.kg/img/logo/rentik_logo_60.png"
+              />
+            </Box>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: "none", sm: "block" } }}
             >
-              <InventoryIcon />
-            </IconButton>
+              RENTIK
+            </Typography>
 
-            <IconButton
-              size="large"
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon sx={{ color: 'white' }} />
+              </SearchIconWrapper>
+              <StyledInputBase
+                sx={{ backgroundColor: '#d2d2d2', color: 'black', borderRadius: '30px', boxShadow: '2px 1px 7px grey', paddingRight: '50px' }}
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Search>
+            <Box sx={{ flexGrow: 3 }} />
+            <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: 'center' }}>
+              <Typography >   {user ? user : 'No auth user'}</Typography>
+              <IconButton
+                size="large"
+                aria-label="show 4 new mails"
+                color="inherit"
+              >
+                <Badge color="error">
+                  <Link to='/cart'>
+                    <LocalGroceryStoreIcon />
+                  </Link>
+                </Badge>
+              </IconButton>
+              <IconButton
+                size="large"
+                aria-label="show 4 new mails"
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen2}
+                color="inherit"
+              >
+                <InventoryIcon />
+              </IconButton>
 
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-      {renderProduct}
-    </Box>
+              <IconButton
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            </Box>
+            <Box sx={{ display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              >
+                <MoreIcon />
+              </IconButton>
+            </Box>
+          </Toolbar>
+        </AppBar>
+        {renderMobileMenu}
+        {renderMenu}
+        {renderProduct}
+      </Box>
+    </>
   );
 }
