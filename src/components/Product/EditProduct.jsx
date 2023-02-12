@@ -1,8 +1,23 @@
+import { PhotoCamera } from "@mui/icons-material";
+import {
+  Button,
+  FilledInput,
+  FormControl,
+  IconButton,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { Box } from "@mui/system";
 import React from "react";
+import Footer from "../../Footer/Footer";
 
 const EditProduct = () => {
   return (
-    <Box className="add" sx={{ width: "70vw", margin: "6vh auto" }}>
+    <>
+    <Box className="add" sx={{ width: "70vw", margin: "6vh auto", paddingTop:'5rem' }}>
       <Typography
         sx={{ marginBottom: "20px", color: "orange" }}
         className="title"
@@ -99,6 +114,8 @@ const EditProduct = () => {
         SAVE
       </Button>
     </Box>
+    <Footer />
+    </>
   );
 };
 
