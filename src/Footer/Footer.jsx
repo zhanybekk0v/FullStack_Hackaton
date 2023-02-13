@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <div style={{ marginTop: "50px" }}>
       <footer class="footer">
-        <div class="footer_wrap">
+        <div class="container">
           <div class="row">
             <div class="footer-col">
               <h4>company</h4>
@@ -73,64 +73,19 @@ const Footer = () => {
               <h4>follow us</h4>
               <div class="social-links">
                 <a href="#">
-                  <i class="">
-                    <MDBBtn
-                      outline
-                      color="light"
-                      floating
-                      className="m-1"
-                      href="https://ru-ru.facebook.com/rentikkg/"
-                      role="button"
-                    >
-                      <MDBIcon fab icon="facebook-f" />
-                    </MDBBtn>
-                  </i>
+                  <i class="fab fa-facebook-f"></i>
                 </a>
                 <a href="#">
-                  <i class="">
-                    <MDBBtn
-                      outline
-                      color="light"
-                      floating
-                      className="m-1"
-                      href="https://twitter.com/Rentik_ES"
-                      role="button"
-                    >
-                      <MDBIcon fab icon=" fa-twitter" />
-                    </MDBBtn>
-                  </i>
+                  <i class="fab fa-twitter"></i>
                 </a>
                 <a href="#">
-                  <i class="">
-                    <MDBBtn
-                      outline
-                      color="light"
-                      floating
-                      className="m-1"
-                      href="https://instagram.com/rentik.kg?igshid=Yzg5MTU1MDY="
-                      role="button"
-                    >
-                      <MDBIcon fab icon="instagram" />
-                    </MDBBtn>
-                  </i>
+                  <i class="fab fa-instagram"></i>
                 </a>
                 <a href="#">
-                  <i class="">
-                    <MDBBtn
-                      outline
-                      color="light"
-                      floating
-                      className="m-1"
-                      href="https://rentik.kg/rucw3"
-                      role="button"
-                    >
-                      <MDBIcon fab icon="fab fa-google" />
-                    </MDBBtn>
-                  </i>
+                  <i class="fab fa-linkedin-in"></i>
                 </a>
               </div>
             </div>
-            <div></div>
           </div>
         </div>
       </footer>
