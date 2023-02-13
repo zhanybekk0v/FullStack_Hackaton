@@ -1,7 +1,12 @@
 import React from "react";
+import Home from "../Home/Home";
+import Footer from '../Footer/Footer'
 
 const HomePage = () => {
-  return <div className="home"></div>;
+  return <div >
+    <Home />
+    <Footer />
+  </div>;
 };
 
 export default HomePage;
