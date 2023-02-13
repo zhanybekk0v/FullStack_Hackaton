@@ -12,11 +12,14 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import InventoryIcon from '@mui/icons-material/Inventory';
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
-import { width } from "@mui/system";
+import { Link, useNavigate } from "react-router-dom";
+import { InputLabel, NativeSelect, FormControl, Select } from "@mui/material";
+
 
 const pages = [
   { name: "Home", link: "/", id: 1 },
@@ -68,14 +71,22 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Navbar() {
+
+  const navigate = useNavigate()
+
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEm, setAnchorEm] = React.useState(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
+  const isMenuOpen2 = Boolean(anchorEm);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
+  };
+  const handleProfileMenuOpen2 = (event) => {
+    setAnchorEm(event.currentTarget);
   };
 
   const handleMobileMenuClose = () => {
@@ -84,6 +95,7 @@ export default function Navbar() {
 
   const handleMenuClose = () => {
     setAnchorEl(null);
+    setAnchorEm(null)
     handleMobileMenuClose();
   };
 
@@ -108,10 +120,44 @@ export default function Navbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <Link to='/login'>
+        <MenuItem onClick={handleMenuClose} sx={{ textDecoration: 'none' }}>Login</MenuItem>
+      </Link>
+      <Link to='/register'>
+        <MenuItem onClick={handleMenuClose}>Register</MenuItem>
+      </Link>
+      <MenuItem onClick={handleMenuClose}>LogOut</MenuItem>
+    </Menu>
+
+
+
+
+  );
+  const renderProduct = (
+    <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      id={menuId}
+      keepMounted
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      open={isMenuOpen2}
+      onClose={handleMenuClose}
+    >
+      <Link to='/products'>
+        <MenuItem onClick={handleMenuClose} sx={{ textDecoration: 'none' }}>Products</MenuItem>
+      </Link>
+      <Link to='/admin'>
+        <MenuItem onClick={handleMenuClose}>AddProduct</MenuItem>
+      </Link>
     </Menu>
   );
+
   <div
     class="item carousel-img active "
     style="background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url(/img/home/slider/slider_0.jpg)"
@@ -133,19 +179,22 @@ export default function Navbar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <LocalGroceryStoreIcon />
-        </IconButton>
-        <p>Cart</p>
-      </MenuItem>
+      <Link to='/cart'>
+        <MenuItem >
+          <IconButton
 
+            size="large"
+            aria-label="account of current user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="inherit"
+          >
+
+            <LocalGroceryStoreIcon />
+          </IconButton>
+          <p>Cart</p>
+        </MenuItem>
+      </Link>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -158,12 +207,23 @@ export default function Navbar() {
         </IconButton>
         <p>Profile</p>
       </MenuItem>
+      <MenuItem onClick={handleProfileMenuOpen2}>
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          <InventoryIcon />
+        </IconButton>
+        <p>Products</p>
+      </MenuItem>
     </Menu>
   );
-
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="default">
+      <AppBar position="fixed" color="default">
         <Toolbar>
           <Box
             sx={{
@@ -189,27 +249,44 @@ export default function Navbar() {
 
           <Search>
             <SearchIconWrapper>
-              <SearchIcon />
+              <SearchIcon sx={{ color: 'white' }} />
             </SearchIconWrapper>
             <StyledInputBase
+              sx={{ backgroundColor: '#d2d2d2', color: 'black', borderRadius: '30px', boxShadow: '2px 1px 7px grey', paddingRight: '50px' }}
+
               //   sx={{ paddingLeft: "100px", textAlign: "start" }}
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 3 }} />
+          <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: 'center' }}>
             <IconButton
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
             >
-              <Badge badgeContent={4} color="error">
-                <LocalGroceryStoreIcon />
+              <Badge color="error">
+                <Link to='/cart'>
+                  <LocalGroceryStoreIcon />
+                </Link>
               </Badge>
             </IconButton>
+
             <IconButton
               size="large"
+              aria-label="show 4 new mails"
+              // aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen2}
+              color="inherit"
+            >
+              <InventoryIcon />
+            </IconButton>
+
+            <IconButton
+              size="large"
+
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
@@ -236,6 +313,7 @@ export default function Navbar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+      {renderProduct}
     </Box>
   );
 }

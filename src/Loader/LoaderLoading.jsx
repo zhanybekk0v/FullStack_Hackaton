@@ -1,7 +1,9 @@
 import React from "react";
 
 const LoaderLoading = () => {
-  return <div>LoaderLoading</div>;
+  return <div>
+    
+  </div>;
 };
 
 export default LoaderLoading;
