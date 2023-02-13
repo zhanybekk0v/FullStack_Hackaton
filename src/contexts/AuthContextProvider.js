@@ -4,10 +4,11 @@ import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { API } from '../helpers/consts'
 
-export const authContext = createContext()
-export const useAuth = () => useContext(authContext)
+export const authContext = createContext();
+export const useAuth = () => useContext(authContext);
 
 const AuthContextProvider = ({ children }) => {
+
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(false)
 

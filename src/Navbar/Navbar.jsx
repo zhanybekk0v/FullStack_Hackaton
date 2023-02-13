@@ -18,6 +18,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContextProvider";
 
 
+const pages = [
+  { name: "Home", link: "/", id: 1 },
+  { name: "Our Partnes", link: "/partner", id: 2 },
+  { name: "Product", link: "/products", id: 3 },
+  { name: "About", link: "/about", id: 4 },
+  { name: "Admin", link: "/admin", id: 5 },
+];
+const settings = ["Profile", "Account", "Dashboard", "Logout"];
+
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,

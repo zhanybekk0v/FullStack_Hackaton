@@ -1,16 +1,15 @@
 import React from "react";
-import { RotatingLines } from "react-loader-spinner";
 
 const LoaderLoading = () => {
-  return <div style={{display: 'flex', justifyContent:'center', alignItems:"center"}}>
-    < RotatingLines
-      strokeColor="grey"
-      strokeWidth="5"
-      animationDuration="0.75"
-      width="96"
-      visible={true}
-    />
-  </div>;
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    ></div>
+  );
 };
 
 export default LoaderLoading;
