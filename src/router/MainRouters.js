@@ -9,6 +9,7 @@ import ProductsPage from "../pages/ProductsPage";
 import Login from '../Auth/Login'
 import Register from '../Auth/Register'
 import EditProduct from '../components/Product/EditProduct'
+import LoaderLoading from "../Loader/LoaderLoading";
 
 const MainRouters = () => {
   const PUBLIC_ROUTES = [
@@ -63,7 +64,7 @@ const MainRouters = () => {
     <>
       <Routes>
         {PUBLIC_ROUTES.map((item) => (
-          <Route path={item.link} element={item.element} key={item.id} />
+          <Route  path={item.link} element={item.element} key={item.id} />
         ))}
       </Routes>
     </>

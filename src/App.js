@@ -9,8 +9,7 @@ const App = () => {
     <div>
       <Navbar />
       <MainRouters />
-      {/* <HomePage /> */}
-      <Footer />
+
     </div>
   );
 };
