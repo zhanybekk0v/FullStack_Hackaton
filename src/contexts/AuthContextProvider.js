@@ -54,22 +54,14 @@ const AuthContextProvider = ({ children }) => {
     setLoading(true)
     try {
       const tokens = JSON.parse(localStorage.getItem('tokens'))
-      const Authorization = `Bearer ${tokens.access}`
-
-      const config = {
-        headers: {
-          Authorization,
-        }
-      }
       const res = await axios.post(`${API}/accounts/refresh/`, {
         refresh: tokens.refresh,
-        config,
       });
       localStorage.setItem('tokens', JSON.stringify({
         access: res.data.access,
         refresh: tokens.refresh,
       })
-      );
+      );  
       const email = localStorage.getItem('email');
       setUser(email);
 
@@ -84,7 +76,7 @@ const AuthContextProvider = ({ children }) => {
     };
   };
 
- function handleLogOut() {
+  function handleLogOut() {
     localStorage.removeItem('tokens')
     localStorage.removeItem('email')
     setUser(false)
@@ -93,7 +85,7 @@ const AuthContextProvider = ({ children }) => {
       icon: 'warning',
       title: 'Sorry!!!',
       text: 'Вы вышли из аккаунта!',
-      footer:  '<a href="http://localhost:3000/login">Попробуйте войти в аккаунт снова!</a>'
+      footer: '<a href="http://localhost:3000/login">Попробуйте войти в аккаунт снова!</a>'
     })
   }
 
