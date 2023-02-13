@@ -67,7 +67,7 @@ const AddProduct = () => {
           <input hidden accept="image/*" type="file" />
           <PhotoCamera />
         </IconButton>
-        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}> 
           <InputLabel id="demo-simple-select-standard-label">CHOOSE</InputLabel>
           <Select
             labelId="demo-simple-select-standard-label"
