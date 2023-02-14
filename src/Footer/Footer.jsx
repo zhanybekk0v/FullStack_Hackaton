@@ -42,7 +42,13 @@ const Footer = () => {
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <br />
+                <div>
+                <h1 className='footer_logos'>R</h1>
+                <h3>entik</h3>
               </div>
+              </div>
+             
             </div>
             <div>
                             

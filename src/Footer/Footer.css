@@ -10,7 +10,7 @@ ul{
 	list-style: none;
 }
 .footer{
-	background-color: #24262b;
+	background-color: #b1b2b6;
     padding: 70px 0;
 }
 .footer-col{
@@ -19,7 +19,7 @@ ul{
 }
 .footer-col h4{
 	font-size: 18px;
-	color: #ffffff;
+	color: #000000;
 	text-transform: capitalize;
 	margin-bottom: 35px;
 	font-weight: 500;
@@ -30,7 +30,7 @@ ul{
 	position: absolute;
 	left:0;
 	bottom: -10px;
-	background-color: #e91e63;
+	background-color: orange;
 	height: 2px;
 	box-sizing: border-box;
 	width: 50px;
@@ -41,32 +41,38 @@ ul{
 .footer-col ul li a{
 	font-size: 16px;
 	text-transform: capitalize;
-	color: #ffffff;
+	color: #1d1d1d;
 	text-decoration: none;
 	font-weight: 300;
-	color: #bbbbbb;
+	/* color: #bbbbbb; */
 	display: block;
 	transition: all 0.3s ease;
+	border-bottom: solid 0 black;
 }
 .footer-col ul li a:hover{
-	color: #ffffff;
+	color: #000000;
+	/* size: ; */
+	border-bottom: solid 1px black;
 	padding-left: 8px;
 }
 .footer-col .social-links a{
 	display: inline-block;
 	height: 40px;
 	width: 40px;
-	background-color: rgba(255,255,255,0.2);
+	background-color: rgba(0, 0, 0, 0.2);
 	margin:0 10px 10px 0;
 	text-align: center;
 	line-height: 40px;
 	border-radius: 50%;
-	color: #ffffff;
+	color: #464444;
 	transition: all 0.5s ease;
 }
 .footer-col .social-links a:hover{
 	color: #24262b;
 	background-color: #ffffff;
+}
+.footer_logos{
+	color: orange;
 }
 
 /*responsive*/
