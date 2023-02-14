@@ -2,7 +2,18 @@
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(183, 75, 210, 1) 100%, rgba(252, 70, 107, 1) 100%);
+  background: radial-gradient(
+    circle,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(183, 75, 210, 1) 100%,
+    rgba(252, 70, 107, 1) 100%
+  );
+  background: radial-gradient(
+    circle,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(183, 75, 210, 1) 100%,
+    rgba(252, 70, 107, 1) 100%
+  );
   height: 100vh;
 }
 
@@ -13,6 +24,7 @@
 }
 
 .user {
+  text-align: center;
   width: 100px;
   height: 100px;
 }
@@ -24,7 +36,7 @@
   color: #bababa;
   font-weight: 700;
   text-decoration: none;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .forgot__link:hover {
@@ -77,7 +89,7 @@
   margin: 20px auto;
   font-size: 16px;
   border: none;
-  border-bottom: 2px solid #6856EB;
+  border-bottom: 2px solid #6856eb;
   padding: 14px 15px;
   width: 200px;
   outline: none;
@@ -87,7 +99,7 @@
 .form-box input[type="text"]:focus,
 .form-box input[type="password"]:focus {
   width: 250px;
-  border-color: #B44BD3;
+  border-color: #b44bd3;
 }
 
 .form-box-register input[type="text"],
@@ -98,7 +110,7 @@
   margin: 20px auto;
   font-size: 16px;
   border: none;
-  border-bottom: 2px solid #6856EB;
+  border-bottom: 2px solid #6856eb;
   padding: 14px 15px;
   width: 200px;
   outline: none;
@@ -108,7 +120,7 @@
 .form-box-register input[type="text"]:focus,
 .form-box-register input[type="password"]:focus {
   width: 250px;
-  border-color: #B44BD3;
+  border-color: #b44bd3;
 }
 
 .btn-login {
@@ -117,7 +129,7 @@
   display: block;
   margin: 20px auto;
   text-align: center;
-  border: 2px solid #B44BD3;
+  border: 2px solid #b44bd3;
   width: 230px;
   height: 30px;
   outline: none;
@@ -127,7 +139,7 @@
 }
 
 .btn-login:hover {
-  background: #9A50DC;
+  background: #9a50dc;
 }
 
 @media all and (max-width: 1350px) {
@@ -146,7 +158,12 @@
   .loginpage {
     height: 100vh;
     padding-bottom: 50px;
-    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(183, 75, 210, 1) 100%, rgba(252, 70, 107, 1) 100%);
+    background: radial-gradient(
+      circle,
+      rgba(63, 94, 251, 1) 0%,
+      rgba(183, 75, 210, 1) 100%,
+      rgba(252, 70, 107, 1) 100%
+    );
   }
 
   .form-box {
@@ -166,7 +183,7 @@
     padding-top: 41px;
     padding-bottom: 40px;
   }
-  .form-box{
+  .form-box {
     top: 54%;
     left: 50%;
     width: 35%;
@@ -189,7 +206,12 @@
 
 @media all and (max-width: 550px) {
   .loginpage {
-    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(183, 75, 210, 1) 100%, rgba(252, 70, 107, 1) 100%);
+    background: radial-gradient(
+      circle,
+      rgba(63, 94, 251, 1) 0%,
+      rgba(183, 75, 210, 1) 100%,
+      rgba(252, 70, 107, 1) 100%
+    );
   }
 
   .form-box {
@@ -215,9 +237,8 @@
   .form-box-register input[type="text"]:focus,
   .form-box-register input[type="password"]:focus {
     width: 200px;
-    border-color: #B44BD3;
+    border-color: #b44bd3;
   }
-
 }
 
 @media all and (max-width: 426px) {
@@ -227,7 +248,7 @@
     height: 69%;
     top: 50%;
   }
-  .loginpage{
+  .loginpage {
     padding-bottom: 0;
   }
 
@@ -244,7 +265,7 @@
   .form-box input[type="text"]:focus,
   .form-box input[type="password"]:focus {
     width: 180px;
-    border-color: #B44BD3;
+    border-color: #b44bd3;
   }
 
   .form-box-register input[type="text"],
@@ -256,7 +277,7 @@
   .form-box-register input[type="text"]:focus,
   .form-box-register input[type="password"]:focus {
     width: 180px;
-    border-color: #B44BD3;
+    border-color: #b44bd3;
   }
 
   .btn-login {
@@ -283,7 +304,7 @@
   .Error {
     font-size: 12px;
   }
-  .loginpage{
+  .loginpage {
     padding-bottom: 0;
   }
 }
@@ -296,7 +317,7 @@
     height: 60%;
     top: 50%;
   }
-  .loginpage{
+  .loginpage {
     padding-bottom: 0;
   }
 
@@ -308,16 +329,10 @@
   .form-box h1 {
     font-size: 19px;
   }
-
   .form-box-register {
-    margin-top: 25px;
-    width: 55%;
+    width: 50%;
     left: 10%;
-    height: 74%;
-    border-top-right-radius: 30%;
-    border-bottom-left-radius: 30%;
-    border-top-left-radius: 0;
-    border-bottom-right-radius: 0;
+    height: 56%;
   }
 
   .form-box-register input[type="text"],
@@ -328,7 +343,7 @@
   .form-box-register input[type="text"]:focus,
   .form-box-register input[type="password"]:focus {
     width: 150px;
-    border-color: #B44BD3;
+    border-color: #b44bd3;
   }
   .Error {
     font-size: 12px;
