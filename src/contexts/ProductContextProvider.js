@@ -40,12 +40,11 @@ const ProductContextProvider = ({ children }) => {
       const res = await axios.get(`${API}/products/${window.location.search} `, config)
       dispatch({type: "GET_PRODUCTS", payload: res.data})
     } catch (error) {
-      // Swal.fire({
-      //   icon: 'error',
-      //   title: 'Oops...',
-      //   text: error,
-      // })
-      console.log(error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error,
+      })
     }
   }
 
@@ -90,12 +89,11 @@ const ProductContextProvider = ({ children }) => {
       console.log(res);
 
     } catch (error) {
-      // Swal.fire({
-      //   icon: 'error',
-      //   title: 'Oops...',
-      //   text: error,
-      // })
-      console.log(error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error,
+      })
     }
   }
 
