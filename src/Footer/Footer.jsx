@@ -84,6 +84,10 @@ const Footer = () => {
                 <a href="#">
                   <i class="fab fa-linkedin-in"></i>
                 </a>
+                <br />
+              </div>
+              <div>
+                <h1 className="footer-logos">Rentik</h1>
               </div>
             </div>
           </div>
