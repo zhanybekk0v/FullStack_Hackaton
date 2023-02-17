@@ -3,7 +3,6 @@
 
   --gray: #abae82;
 }
-
 /* * {
   padding: 0;
   margin: 0;
@@ -18,12 +17,10 @@
   width: 80%;
   display: block;
 }
-
 .container {
   width: 88vw;
   margin: 0 auto;
 }
-
 .lg-title,
 .md-title,
 .sm-title {
@@ -31,7 +28,6 @@
   padding: 0.6rem 0;
   text-transform: capitalize;
 }
-
 .lg-title {
   font-size: 2.5rem;
   font-weight: 500;
@@ -39,7 +35,6 @@
   padding: 1.3rem 0;
   opacity: 0.9;
 }
-
 .md-title {
   font-size: 2rem;
   font-family: "Roboto", sans-serif;

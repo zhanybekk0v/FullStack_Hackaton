@@ -46,6 +46,7 @@ ul{
 	font-weight: 300;
 	display: block;
 	transition: all 0.3s ease;
+	border-bottom: solid 0 black;
 }
 .footer-col ul li a:hover{
 	color: #000000;
@@ -60,7 +61,7 @@ ul{
 	text-align: center;
 	line-height: 40px;
 	border-radius: 50%;
-	color: #ffffff;
+	color: #464444;
 	transition: all 0.5s ease;
 }
 .footer-col .social-links a:hover{

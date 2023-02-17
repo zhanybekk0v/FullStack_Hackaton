@@ -63,6 +63,21 @@ const MainRouters = () => {
       link:'/add' ,
       element: <AddProduct />,
       id: 10
+    },
+    {
+      link: "/login",
+      element: <Login />,
+      id: 7
+    },
+    {
+      link: '/register',
+      element: <Register />,
+      id: 8
+    },
+    {
+      link: '/edit/:id',
+      element: <EditProduct />,
+      id: 9
     }
   ];
 
