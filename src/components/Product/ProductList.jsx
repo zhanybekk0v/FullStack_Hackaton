@@ -1,12 +1,21 @@
-import React from "react";
-import ProductCard from "./ProductCard";
+import React, { useEffect } from "react";
+import { useProduct } from "../../contexts/ProductContextProvider";
+import ProductCard from '../Product/ProductCard'
 
 const ProductList = () => {
-  return <>
+  const { getProducts, products } = useProduct()
+  console.log(products)
+  useEffect(() => {
+    getProducts();
+  }, []);
 
-    <ProductCard/>
-  
-  </>;
+  return <div>
+    <div style={{ display: 'flex', justifyContent: "center" , width: '100%' , paddingTop:'5rem'}}>
+      {products.map((item) => (
+        <ProductCard item={item} key={item.id} />
+      ))}
+    </div>
+  </div>;
 };
 
 export default ProductList;

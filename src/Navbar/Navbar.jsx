@@ -155,7 +155,7 @@ export default function Navbar() {
       <Link to='/products'>
         <MenuItem onClick={handleMenuClose} sx={{ textDecoration: 'none' }}>Products</MenuItem>
       </Link>
-      <Link to='/admin'>
+      <Link to='/add'>
         <MenuItem onClick={handleMenuClose}>AddProduct</MenuItem>
       </Link>
     </Menu>
@@ -232,22 +232,26 @@ export default function Navbar() {
                 marginRight: "20px",
               }}
             >
+              <Link to='/'>
               <img
                 style={{
                   width: "40px",
                   height: "40px",
                 }}
                 src="https://rentik.kg/img/logo/rentik_logo_60.png"
-              />
+                />
+                </Link>
             </Box>
+            <Link to='/'>
             <Typography
               variant="h6"
               noWrap
               component="div"
               sx={{ display: { xs: "none", sm: "block" } }}
-            >
+              >
               RENTIK
             </Typography>
+              </Link>
 
             <Search>
               <SearchIconWrapper>

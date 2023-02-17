@@ -4,13 +4,9 @@ import React from "react";
 import ProductList from "../components/Product/ProductList";
 
 const ProductsPage = () => {
-  return <>
-    <Box>
-      <Grid>
-        <ProductList/>
-      </Grid>
-    </Box>
-  </>;
+  return <div>
+    <ProductList />
+  </div>;
 };
 
 export default ProductsPage;

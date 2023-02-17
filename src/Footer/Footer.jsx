@@ -1,6 +1,13 @@
 import React from "react";
 import "./Footer.css";
-
+import {
+  MDBFooter,
+  MDBContainer,
+  MDBCol,
+  MDBRow,
+  MDBIcon,
+  MDBBtn,
+} from "mdb-react-ui-kit";
 
 const Footer = () => {
   return (
@@ -65,16 +72,23 @@ const Footer = () => {
             <div class="footer-col">
               <h4>follow us</h4>
               <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
                 <br />
-                <div>
-                <h1 className='footer_logos'>Rentik</h1>
               </div>
+              <div>
+                <h1 className="footer-logos">Rentik</h1>
               </div>
-             
             </div>
           </div>
         </div>

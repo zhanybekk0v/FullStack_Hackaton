@@ -10,6 +10,7 @@ import Login from '../Auth/Login'
 import Register from '../Auth/Register'
 import EditProduct from '../components/Product/EditProduct'
 import LoaderLoading from "../Loader/LoaderLoading";
+import AddProduct from "../components/Product/AddProduct";
 
 const MainRouters = () => {
   const PUBLIC_ROUTES = [
@@ -42,6 +43,26 @@ const MainRouters = () => {
       link: "/admin",
       element: <AdminPage />,
       id: 6,
+    },
+    {
+      link: "/login",
+      element: <Login />,
+      id: 7
+    },
+    {
+      link: '/register',
+      element: <Register />,
+      id: 8
+    },
+    {
+      link: '/edit/:id',
+      element: <EditProduct />,
+      id: 9
+    },
+    {
+      link:'/add' ,
+      element: <AddProduct />,
+      id: 10
     },
     {
       link: "/login",

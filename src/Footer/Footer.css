@@ -56,7 +56,7 @@ ul{
 	display: inline-block;
 	height: 40px;
 	width: 40px;
-	background-color: rgba(0, 0, 0, 0.2);
+	background-color: rgba(0,0,0,0.2);
 	margin:0 10px 10px 0;
 	text-align: center;
 	line-height: 40px;
@@ -68,8 +68,8 @@ ul{
 	color: #24262b;
 	background-color: #ffffff;
 }
-.footer_logos{
-	color: orange;
+.footer-logos{
+  color: orange;
 }
 
 /*responsive*/
