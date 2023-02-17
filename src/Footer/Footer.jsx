@@ -1,38 +1,65 @@
-import React from 'react'
-import './Footer.css'
+import React from "react";
+import "./Footer.css";
+
 
 const Footer = () => {
   return (
-    <div style={{marginTop: '50px'}}>
+    <div style={{ marginTop: "50px" }}>
       <footer class="footer">
-        <div class="footer_wrap">
+        <div class="container">
           <div class="row">
             <div class="footer-col">
               <h4>company</h4>
               <ul>
-                <li><a href="#">about us</a></li>
-                <li><a href="#">our services</a></li>
-                <li><a href="#">privacy policy</a></li>
-                <li><a href="#">affiliate program</a></li>
+                <li>
+                  <a href="#">about us</a>
+                </li>
+                <li>
+                  <a href="#">our services</a>
+                </li>
+                <li>
+                  <a href="#">privacy policy</a>
+                </li>
+                <li>
+                  <a href="#">affiliate program</a>
+                </li>
               </ul>
             </div>
             <div class="footer-col">
               <h4>get help</h4>
               <ul>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">shipping</a></li>
-                <li><a href="#">returns</a></li>
-                <li><a href="#">order status</a></li>
-                <li><a href="#">payment options</a></li>
+                <li>
+                  <a href="#">FAQ</a>
+                </li>
+                <li>
+                  <a href="#">shipping</a>
+                </li>
+                <li>
+                  <a href="#">returns</a>
+                </li>
+                <li>
+                  <a href="#">order status</a>
+                </li>
+                <li>
+                  <a href="#">payment options</a>
+                </li>
               </ul>
             </div>
             <div class="footer-col">
               <h4>online shop</h4>
               <ul>
-                <li><a href="#">watch</a></li>
-                <li><a href="#">bag</a></li>
-                <li><a href="#">shoes</a></li>
-                <li><a href="#">dress</a></li>
+                <li>
+                  <a href="#">watch</a>
+                </li>
+                <li>
+                  <a href="#">bag</a>
+                </li>
+                <li>
+                  <a href="#">shoes</a>
+                </li>
+                <li>
+                  <a href="#">dress</a>
+                </li>
               </ul>
             </div>
             <div class="footer-col">
@@ -44,21 +71,16 @@ const Footer = () => {
                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 <br />
                 <div>
-                <h1 className='footer_logos'>R</h1>
-                <h3>entik</h3>
+                <h1 className='footer_logos'>Rentik</h1>
               </div>
               </div>
              
             </div>
-            <div>
-                            
-            </div>
           </div>
         </div>
       </footer>
-
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

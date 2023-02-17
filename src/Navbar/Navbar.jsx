@@ -9,14 +9,23 @@ import InputBase from "@mui/material/InputBase";
 import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
+import InventoryIcon from '@mui/icons-material/Inventory';
 import MoreIcon from "@mui/icons-material/MoreVert";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
-import { width } from "@mui/system";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContextProvider";
+
+
+const pages = [
+  { name: "Home", link: "/", id: 1 },
+  { name: "Our Partnes", link: "/partner", id: 2 },
+  { name: "Product", link: "/products", id: 3 },
+  { name: "About", link: "/about", id: 4 },
+  { name: "Admin", link: "/admin", id: 5 },
+];
+const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -59,14 +68,28 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Navbar() {
+  const { user, checkAuth , handleLogOut} = useAuth()
+  const navigate = useNavigate()
+
+  React.useEffect(() => {
+    if (localStorage.getItem('tokens')) {
+      checkAuth()
+    }
+  }, [])
+
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEm, setAnchorEm] = React.useState(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
+  const isMenuOpen2 = Boolean(anchorEm);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
+  };
+  const handleProfileMenuOpen2 = (event) => {
+    setAnchorEm(event.currentTarget);
   };
 
   const handleMobileMenuClose = () => {
@@ -75,6 +98,7 @@ export default function Navbar() {
 
   const handleMenuClose = () => {
     setAnchorEl(null);
+    setAnchorEm(null)
     handleMobileMenuClose();
   };
 
@@ -99,10 +123,44 @@ export default function Navbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <Link to='/login'>
+        <MenuItem onClick={handleMenuClose} sx={{ textDecoration: 'none' }}>Login</MenuItem>
+      </Link>
+      <Link to='/register'>
+        <MenuItem onClick={handleMenuClose}>Register</MenuItem>
+      </Link>
+      <MenuItem onClick={() => {handleMenuClose(); handleLogOut()}}>LogOut</MenuItem>
+    </Menu>
+
+
+
+
+  );
+  const renderProduct = (
+    <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      id={menuId}
+      keepMounted
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      open={isMenuOpen2}
+      onClose={handleMenuClose}
+    >
+      <Link to='/products'>
+        <MenuItem onClick={handleMenuClose} sx={{ textDecoration: 'none' }}>Products</MenuItem>
+      </Link>
+      <Link to='/admin'>
+        <MenuItem onClick={handleMenuClose}>AddProduct</MenuItem>
+      </Link>
     </Menu>
   );
+
   <div
     class="item carousel-img active "
     style="background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url(/img/home/slider/slider_0.jpg)"
@@ -124,7 +182,21 @@ export default function Navbar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem onClick={handleProfileMenuOpen}>
+      <Link to='/cart' onClick={handleMenuClose}>
+        <MenuItem >
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <LocalGroceryStoreIcon />
+          </IconButton>
+          <p>Cart</p>
+        </MenuItem>
+      </Link>
+      <MenuItem onClick={handleProfileMenuOpen2}>
         <IconButton
           size="large"
           aria-label="account of current user"
@@ -132,11 +204,10 @@ export default function Navbar() {
           aria-haspopup="true"
           color="inherit"
         >
-          <LocalGroceryStoreIcon />
+          <InventoryIcon />
         </IconButton>
-        <p>Cart</p>
+        <p>Products</p>
       </MenuItem>
-
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -151,82 +222,97 @@ export default function Navbar() {
       </MenuItem>
     </Menu>
   );
-
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="default">
-        <Toolbar>
-          <Box
-            sx={{
-              marginRight: "20px",
-            }}
-          >
-            <img
-              style={{
-                width: "40px",
-                height: "40px",
+    <>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="fixed" color="default">
+          <Toolbar>
+            <Box
+              sx={{
+                marginRight: "20px",
               }}
-              src="https://rentik.kg/img/logo/rentik_logo_60.png"
-            />
-          </Box>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
-          >
-            RENTIK
-          </Typography>
+            >
+              <img
+                style={{
+                  width: "40px",
+                  height: "40px",
+                }}
+                src="https://rentik.kg/img/logo/rentik_logo_60.png"
+              />
+            </Box>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: "none", sm: "block" } }}
+            >
+              RENTIK
+            </Typography>
 
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              //   sx={{ paddingLeft: "100px", textAlign: "start" }}
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
-            >
-              <Badge badgeContent={4} color="error">
-                <LocalGroceryStoreIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </Box>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon sx={{ color: 'white' }} />
+              </SearchIconWrapper>
+              <StyledInputBase
+                sx={{ backgroundColor: '#d2d2d2', color: 'black', borderRadius: '30px', boxShadow: '2px 1px 7px grey', paddingRight: '50px' }}
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Search>
+            <Box sx={{ flexGrow: 3 }} />
+            <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: 'center' }}>
+              <Typography >   {user ? user : 'No auth user'}</Typography>
+              <IconButton
+                size="large"
+                aria-label="show 4 new mails"
+                color="inherit"
+              >
+                <Badge color="error">
+                  <Link to='/cart'>
+                    <LocalGroceryStoreIcon />
+                  </Link>
+                </Badge>
+              </IconButton>
+              <IconButton
+                size="large"
+                aria-label="show 4 new mails"
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen2}
+                color="inherit"
+              >
+                <InventoryIcon />
+              </IconButton>
+
+              <IconButton
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            </Box>
+            <Box sx={{ display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              >
+                <MoreIcon />
+              </IconButton>
+            </Box>
+          </Toolbar>
+        </AppBar>
+        {renderMobileMenu}
+        {renderMenu}
+        {renderProduct}
+      </Box>
+    </>
   );
 }

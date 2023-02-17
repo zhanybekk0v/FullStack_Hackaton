@@ -12,14 +12,7 @@ code {
     monospace;
 }
 
-.add {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.input {
-  width: 80%;
+a {
+  text-decoration: none;
+  color: black;
 }
