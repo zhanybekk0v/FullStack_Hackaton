@@ -10,7 +10,7 @@ const INIT_STATE = {
   products: [],
   post: 0,
   categories: [],
-  oneProduct: {},
+  oneProduct: {}
 }
 
 function reducer(state = INIT_STATE, action) {
@@ -19,6 +19,8 @@ function reducer(state = INIT_STATE, action) {
       return { ...state, products: action.payload.results }
     case "GET_CATEGORIES":
       return { ...state, categories: action.payload }
+      case "GET_ONE_PRODUCT" :
+        return {...state, oneProduct: action.payload}
     default:
       return state;
   }
@@ -97,6 +99,27 @@ const ProductContextProvider = ({ children }) => {
     }
   }
 
+  async function getOneProduct(id) {
+    try{
+      const tokens = JSON.parse(localStorage.getItem('tokens'));
+      const Authorization = `Bearer ${tokens.access}`;
+
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      const res = await axios.get(`${API}/products/${id}`, config)
+      dispatch({type:'GET_ONE_PRODUCT', payload: res.data })
+    }  catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error,
+      })
+    }
+  }
+
 
 
   const values = { 
@@ -104,7 +127,9 @@ const ProductContextProvider = ({ children }) => {
     products: state.products, 
     getCategories, 
     categories: state.categories,
-    addProduct
+    addProduct,
+    getOneProduct,
+    oneProduct: state.oneProduct
    }
   return (
     <productContext.Provider value={values}>
