@@ -1,16 +1,21 @@
 import React from "react";
-import './ProductCard.css'
+import './ProductCard.css';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { IconButton } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({item}) => {
   return  <div class="product-items">
               <div class="product">
                 <div class="product-content">
+                  <Link to={`/details/${item.id}`}>
                   <div class="product-img">
                     <img className="home-img"
                       src={item.preview}
                       alt="product image"
-                    />
+                      />
                   </div>
+                      </Link>
                   <div class="product-btns">
                     <button type="button" class="btn-cart">
                       {" "}
@@ -33,28 +38,31 @@ const ProductCard = ({item}) => {
                   <div class="product-info-top">
                     <h2 class="sm-title">{item.title}</h2>
                     <div class="rating">
-                      <div class="rating-stars">
-                        <input type="radio" name="rating" id="rs0" checked />
-                        <label for="rs0"></label>
-                        <input type="radio" name="rating" id="rs1" />
-                        <label for="rs1"></label>
-                        <input type="radio" name="rating" id="rs2" />
-                        <label for="rs2"></label>
-                        <input type="radio" name="rating" id="rs3" />
-                        <label for="rs3"></label>
-                        <input type="radio" name="rating" id="rs4" />
-                        <label for="rs4"></label>
-                        <input type="radio" name="rating" id="rs5" />
-                        <label for="rs5"></label>
-                        <span class="rating-counter"></span>
+                      <div className="rating-body">
+                      <div class="rating-active"></div>
+                      <div class="rating-items">
+                        <input type="radio" name="rating" id="rs5" value="5" class="rating-item" checked />
+                        <label for="rs5" class="rating-lable" ></label>
+                        <input type="radio" name="rating" id="rs4" value="4" class="rating-item" />
+                        <label for="rs4" class="rating-lable" ></label>
+                        <input type="radio" name="rating" id="rs3" value="3" class="rating-item" />
+                        <label for="rs3" class="rating-lable" ></label>
+                        <input type="radio" name="rating" id="rs2" value="2" class="rating-item" />
+                        <label for="rs2" class="rating-lable" ></label>
+                        <input type="radio" name="rating" id="rs1" value="1" class="rating-item" />
+                        <label for="rs1" class="rating-lable"></label>
+                        </div>
+                        <div class='rating-value'>4.1</div>
                       </div>
                     </div>
                   </div>
                   <a href="#" class="product-name">
                    {item.description}
                   </a>
+                  <div className="product-1">
                   <p class="product-price">{item.price}</p>
                   <p class="product-price">{item.stock}</p>
+                  </div>
                 </div>
 
                 <div class="off-info">
@@ -64,6 +72,6 @@ const ProductCard = ({item}) => {
               </div>
 };
 
-export default ProductList;
+export default ProductCard;
 
 

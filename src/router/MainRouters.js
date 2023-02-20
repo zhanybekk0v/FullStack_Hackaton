@@ -11,6 +11,7 @@ import Register from '../Auth/Register'
 import EditProduct from '../components/Product/EditProduct'
 import LoaderLoading from "../Loader/LoaderLoading";
 import AddProduct from "../components/Product/AddProduct";
+import ProductDetailsPage from "../pages/ProductDetailsPage";
 
 const MainRouters = () => {
   const PUBLIC_ROUTES = [
@@ -75,9 +76,9 @@ const MainRouters = () => {
       id: 8
     },
     {
-      link: '/edit/:id',
-      element: <EditProduct />,
-      id: 9
+      link: '/details/:id',
+      element: <ProductDetailsPage />,
+      id: 10
     }
   ];
 

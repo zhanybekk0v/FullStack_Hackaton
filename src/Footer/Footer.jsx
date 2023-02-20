@@ -8,6 +8,7 @@ import {
   MDBIcon,
   MDBBtn,
 } from "mdb-react-ui-kit";
+import { Box } from "@mui/material";
 
 const Footer = () => {
   return (
@@ -86,9 +87,12 @@ const Footer = () => {
                 </a>
                 <br />
               </div>
-              <div>
+              <Box               
+              variant="h4"
+              element="h2"
+              fontFamily="cursive">
                 <h1 className="footer-logos">Rentik</h1>
-              </div>
+              </Box>
             </div>
           </div>
         </div>
