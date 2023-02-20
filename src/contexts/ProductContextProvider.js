@@ -10,7 +10,7 @@ const INIT_STATE = {
   products: [],
   post: 0,
   categories: [],
-  oneProduct: null,
+  oneProduct: {},
 }
 
 function reducer(state = INIT_STATE, action) {
