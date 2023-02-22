@@ -1,8 +1,8 @@
-:root {
+/* :root {
   --alice-blue: #f1f3f6;
 
   --gray: #abae82;
-}
+} */
 /* * {
   padding: 0;
   margin: 0;
@@ -20,6 +20,8 @@
 .container {
   width: 88vw;
   margin: 0 auto;
+  background-color: #f1f3f6;
+
 }
 .lg-title,
 .md-title,
@@ -52,6 +54,7 @@
   line-height: 1.5;
   opacity: 0.5;
   margin: 0.4rem 0;
+  padding: 50px 0 ;
 }
 
 /* product section */
@@ -156,10 +159,10 @@
   display: inline-block;
 }
 
-.product-price:first-of-type {
+/* .product-price:first-of-type {
   text-decoration: line-through;
   color: var(--carribean-green);
-}
+} */
 
 .product-img img {
   transition: transform 0.6s ease;

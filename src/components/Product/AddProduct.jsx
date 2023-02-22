@@ -173,6 +173,7 @@ const AddProduct = () => {
         </Button>
       </Box>
       <Footer />
+      
     </>
   );
 };

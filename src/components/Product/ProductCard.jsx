@@ -3,9 +3,13 @@ import './ProductCard.css';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useCart } from "../../contexts/CartContextProvider";
+import Header from "../../Header/Header";
 
 const ProductCard = ({item}) => {
-  return  <div class="product-items">
+  const {addProductToCart, checkProductInCart} =useCart()
+  return <>
+   <div class="product-items">
               <div class="product">
                 <div class="product-content">
                   <Link to={`/details/${item.id}`}>
@@ -17,7 +21,7 @@ const ProductCard = ({item}) => {
                   </div>
                       </Link>
                   <div class="product-btns">
-                    <button type="button" class="btn-cart">
+                    <button type="button" class="btn-cart" onClick={() => addProductToCart(item)}>
                       {" "}
                       add to cart
                       <span>
@@ -52,7 +56,7 @@ const ProductCard = ({item}) => {
                         <input type="radio" name="rating" id="rs1" value="1" class="rating-item" />
                         <label for="rs1" class="rating-lable"></label>
                         </div>
-                        <div class='rating-value'>4.1</div>
+                        <div class='rating-value'>{Math.floor(Math.random()* 5)}.{Math.floor(Math.random() * 10)}</div>
                       </div>
                     </div>
                   </div>
@@ -60,7 +64,7 @@ const ProductCard = ({item}) => {
                    {item.description}
                   </a>
                   <div className="product-1">
-                  <p class="product-price">{item.price}</p>
+                  <p class="product-price">{item.price}$</p>
                   <p class="product-price">{item.stock}</p>
                   </div>
                 </div>
@@ -70,6 +74,7 @@ const ProductCard = ({item}) => {
                 </div>
               </div>
               </div>
+              </>
 };
 
 export default ProductCard;

@@ -1,0 +1,13 @@
+.Table-Cell {
+  font-family: cursive;
+}
+
+.Table-user {
+  font-weight: 200;
+}
+
+.buy-btn {
+  background: rgb(219, 212, 201);
+  color: orange;
+  font-family: cursive;
+}
