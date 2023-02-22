@@ -1,338 +1,379 @@
-.content{
-    display: flex;
+.content {
+  display: flex;
 }
-.details-prew{
-    margin: 0 3%;
-    max-width: 600px;
-    margin-left: 10%;
+
+.details-prew {
+  margin: 0 3%;
+  max-width: 600px;
+  margin-left: 10%;
 }
-.home-img{
-    border-radius: 5%;
-    margin: auto;
+
+.home-img {
+  border-radius: 5%;
+  margin: auto;
 }
-.img-details{
-    max-width: 600px;
-    /* height: 350px; */
-    margin-top: 6rem;
+
+.img-details {
+  max-width: 600px;
+  /* height: 350px; */
+  margin-top: 6rem;
 }
-.CardInfo{
-    position:initial;
+
+.CardInfo {
+  position: initial;
+  background: rgb(219, 212, 201);
+  width: 600px;
+  height: 400px;
+  margin-top: 7rem;
+  margin-left: 5px;
+  text-align: center;
+  border-radius: 28px;
+}
+
+.back-btn {
+  position: absolute;
+
+  background: none;
+  border: none;
+  margin: 15px;
+  border-radius: 50%;
+  transition: 1s ease;
+  margin-top: 6rem;
+}
+
+.btn-group {
+  width: 100%;
+  margin: 2% 35px;
+}
+
+.btn_cart,
+.btn_buy {
+  width: 40%;
+  height: 50px;
+  margin: 10px;
+  border: none;
+  background: rgb(219, 212, 201);
+  border-radius: 28px;
+}
+
+.btn_cart:hover,
+.btn_buy:hover {
+  width: 45%;
+  height: 55px;
+  margin: 0;
+  border: none;
+  background: rgb(216, 200, 173);
+  border-radius: 28px;
+
+}
+
+
+.delete {
+  width: 40%;
+  height: 50px;
+  margin: 10px;
+  border: none;
+  background: rgb(182, 100, 90);
+  border-radius: 28px;
+}
+
+.edit {
+  width: 40%;
+  height: 50px;
+  margin: 10px;
+  border: none;
+  background: #d5e97b;
+  border-radius: 28px;
+}
+
+.delete:hover {
+  width: 45%;
+  height: 55px;
+  margin: 0;
+  border: none;
+  background: rgb(255, 51, 0);
+  border-radius: 28px;
+}
+
+.edit:hover {
+  width: 45%;
+  height: 55px;
+  margin: 0;
+  border: none;
+  background: rgb(9, 255, 0);
+  border-radius: 28px;
+
+}
+
+.Title {
+  font-size: 50px;
+}
+
+.details-desc {
+  margin-top: 20px;
+  border-left: 1px solid black;
+  font-size: 18px;
+  color: rgb(83, 83, 83);
+  padding: 15px 60px 10px 15px;
+}
+
+.details-price {
+  margin-top: 6rem;
+  margin-left: 50%;
+  font-size: 30px;
+  color: red;
+}
+
+
+.fildback {
+  background: rgb(219, 212, 201);
+  width: 500px;
+  height: 340px;
+  padding: 20px;
+  margin-top: 1rem;
+  border-radius: 28px;
+}
+
+.fildbackTitle {
+  color: orange;
+  text-align: center;
+  font-family: cursive;
+}
+
+.flidbac-user {
+  color: black;
+}
+
+.filedback-sms {
+  color: rgb(56, 56, 56);
+
+}
+
+.fildbac-comm {
+  color: black;
+
+}
+
+@media all and (max-width: 1200px) {
+
+  .CardInfo {
+    position: initial;
     background: rgb(219, 212, 201);
-    width: 600px;
+    width: 400px;
     height: 400px;
     margin-top: 7rem;
-    margin-left: 5px;
     text-align: center;
     border-radius: 28px;
-}
-.back-btn{ 
-    position: absolute;
+  }
 
+  .details-price {
+    margin-top: 4rem;
+    margin-left: 50%;
+    font-size: 30px;
+    color: red;
+  }
+}
+
+@media all and (max-width: 1024px) {
+  .CardInfo {
+    position: initial;
+    background: rgb(219, 212, 201);
+    width: 90%;
+    height: 380px;
+    margin-top: 7rem;
+    text-align: center;
+    border-radius: 28px;
+    font-size: 10px;
+  }
+
+  .details-price {
+    margin-top: 4rem;
+    margin-left: 40%;
+    font-size: 25px;
+    color: red;
+  }
+
+  .fildback {
+    background: rgb(219, 212, 201);
+    width: 320px;
+    height: 340px;
+    padding: 20px;
+    margin-right: 10px;
+    margin-top: 1rem;
+    border-radius: 28px;
+  }
+}
+
+@media all and (max-width: 768) {
+  .Title {
+    font-size: 30px;
+  }
+
+  .details-desc {
+    margin-top: 10px;
+    border-left: 1px solid black;
+    font-size: 5px;
+    color: rgb(83, 83, 83);
+    padding: 15px 60px 10px 15px;
+  }
+
+  .details-price {
+    margin-top: 4rem;
+    margin-left: 50%;
+    font-size: 25px;
+    color: red;
+  }
+
+  .CardInfo {
+    position: initial;
+    background: rgb(219, 212, 201);
+    width: 30%;
+    height: 600px;
+    margin-top: 6rem;
+    text-align: center;
+    border-radius: 28px;
+  }
+}
+
+@media all and (max-width: 425px) {
+
+  /* .Card-details{
+        position:absolute;
+    } */
+  .CardInfo {
+    position: initial;
+    background: rgb(219, 212, 201);
+    width: 80%;
+    height: 200px;
+    margin-top: 6rem;
+    text-align: center;
+    border-radius: 28px;
+    tab-size: 10px;
+  }
+
+  .Title {
+    font-size: 18px;
+  }
+
+  .fildback {
+    background: rgb(219, 212, 201);
+    width: 65%;
+    height: 200px;
+    padding: 20px;
+    margin-right: 10px;
+    margin-top: 1rem;
+    border-radius: 28px;
+  }
+
+  .fildbackTitle {
+    font-size: 20px;
+  }
+
+  .flidbac-user {
+    font-size: 15px;
+  }
+
+  .comm-img {
+    width: 20px;
+  }
+
+  .user-Auth {
+    font-size: 10px;
+  }
+
+  .details-price {
+    margin-top: 2rem;
+    margin-left: 50%;
+    font-size: 15px;
+    color: red;
+  }
+
+  .img-details {
+    max-width: 500px;
+    /* height: 350px; */
+    margin-top: 6rem;
+  }
+
+  .back-btn {
     background: none;
     border: none;
     margin: 15px;
     border-radius: 50%;
     transition: 1s ease;
     margin-top: 6rem;
-}
-.btn-group{
+  }
+
+  .btn-group {
     width: 100%;
-    margin:2% 35px;
-}
-.btn_cart,
-.btn_buy{
-    width:40%;
-    height: 50px;
-    margin:10px;
-    border: none;
-    background: rgb(219, 212, 201);
-    border-radius: 28px;
-}
-.btn_cart:hover,
-.btn_buy:hover{
-    width:45%;
-    height: 55px;
-    margin: 0;
-    border: none;
-    background: rgb(216, 200, 173);
-    border-radius: 28px;
-    
-}
+    margin: 0 10% 0 0;
+  }
 
-
-.delete{
-    width:40%;
-    height: 50px;
-    margin:10px;
-    border: none;
-    background: rgb(182, 100, 90);
-    border-radius: 28px;
-}
-.edit{
-    width:40%;
-    height: 50px;
-    margin:10px;
-    border: none;
-    background: #d5e97b;
-    border-radius: 28px;
-}
-.delete:hover{
-    width:45%;
-    height: 55px;
-    margin: 0;
-    border: none;
-    background: rgb(255, 51, 0);
-    border-radius: 28px;
-}
-.edit:hover{
-    width:45%;
-    height: 55px;
-    margin: 0;
-    border: none;
-    background: rgb(9, 255, 0);
-    border-radius: 28px;
-    
-}
-
-.Title{
-    font-size: 50px;
-}
-.details-desc{
-    margin-top: 20px;
-    border-left:1px solid black;
-    font-size: 18px;
-    color: rgb(83, 83, 83);
-    padding:15px 60px 10px 15px;
-}
-.details-price{
-    margin-top: 6rem;
-    margin-left: 50%;
-    font-size: 30px;
-    color: red;
-}
-
-
-.fildback{
-    background: rgb(219, 212, 201);
-    width: 500px;
-    height: 340px;
-    padding: 20px;
-    margin-top: 1rem;
-    border-radius: 28px;
-}
-.fildbackTitle{
-    color: orange;
-    text-align: center;
-    font-family: cursive;
-}
-.flidbac-user{
-    color: black;
-}
-.filedback-sms{
-    color: rgb(56, 56, 56);
-
-}
-.fildbac-comm{
-    color: black;
-
-}
-
-@media all and (max-width: 1200px){
-
-    .CardInfo{
-        position:initial;
-        background: rgb(219, 212, 201);
-        width:400px;
-        height: 400px;
-        margin-top: 7rem;
-        text-align: center;
-        border-radius: 28px;
-    }
-    .details-price{
-        margin-top: 4rem;
-        margin-left: 50%;
-        font-size: 30px;
-        color: red;
-    }
-}
-@media all and (max-width: 1024px){
-    .CardInfo{
-        position:initial;
-        background: rgb(219, 212, 201);
-        width: 90%;
-        height: 380px;
-        margin-top: 7rem;
-        text-align: center;
-        border-radius: 28px;
-        font-size: 10px;
-    }
-    .details-price{
-        margin-top: 4rem;
-        margin-left: 40%;
-        font-size: 25px;
-        color: red;
-    }
-    .fildback{
-        background: rgb(219, 212, 201);
-        width: 320px;
-        height: 340px;
-        padding: 20px;
-        margin-right: 10px;
-        margin-top: 1rem;
-        border-radius: 28px;
-    }
-}
-@media all and (max-width: 768){
-    .Title{
-        font-size: 30px;
-    }
-    .details-desc{
-        margin-top: 10px;
-        border-left:1px solid black;
-        font-size: 5px;
-        color: rgb(83, 83, 83);
-        padding:15px 60px 10px 15px;
-    }
-    .details-price{
-        margin-top: 4rem;
-        margin-left: 50%;
-        font-size: 25px;
-        color: red;
-    }
-    .CardInfo{
-        position:initial;
-        background: rgb(219, 212, 201);
-        width: 30%;
-        height: 600px;
-        margin-top: 6rem;
-        text-align: center;
-        border-radius: 28px;
-    }
-}
-@media all and (max-width: 425px){
-    /* .Card-details{
-        position:absolute;
-    } */
-    .CardInfo{
-        position:initial;
-        background: rgb(219, 212, 201);
-        width: 80%;
-        height: 200px;
-        margin-top: 6rem;
-        text-align: center;
-        border-radius: 28px;
-        tab-size: 10px;
-    }
-    .Title{
-        font-size: 18px;
-    }
-
-    .fildback{
-        background: rgb(219, 212, 201);
-        width: 65%;
-        height: 200px;
-        padding: 20px;
-        margin-right: 10px;
-        margin-top: 1rem;
-        border-radius: 28px;
-    }
-    .fildbackTitle{
-        font-size: 20px;
-    }
-    .flidbac-user{
-        font-size: 15px;
-    }
-    .comm-img{
-        width: 20px;
-    }
-    .user-Auth{
-        font-size: 10px;
-    }
-    .details-price{
-        margin-top: 2rem;
-        margin-left: 50%;
-        font-size: 15px;
-        color: red;
-    }
-    .img-details{
-        max-width: 500px;
-        /* height: 350px; */
-        margin-top: 6rem;
-    }
-    .back-btn{ 
-        background: none;
-        border: none;
-        margin: 15px;
-        border-radius: 50%;
-        transition: 1s ease;
-        margin-top: 6rem;
-    }
-    .btn-group{
-        width: 100%;
-        margin: 0 10% 0 0;
-    }
-    .btn_cart,
-.btn_buy{
-    width:70%;
+  .btn_cart,
+  .btn_buy {
+    width: 70%;
     height: 20px;
     margin: 0;
     border: none;
     background: rgb(219, 212, 201);
     border-radius: 28px;
     font-size: 10px;
-}
-.btn_cart:hover,
-.btn_buy:hover{
-    width:30%;
+  }
+
+  .btn_cart:hover,
+  .btn_buy:hover {
+    width: 30%;
     height: 55px;
-    margin:10px 30px;
+    margin: 10px 30px;
 
     border: 1px solid rgb(252, 96, 96);
     background: rgb(216, 200, 173);
     border-radius: 28px;
-}
+  }
 
-.delete{
-    width:30%;
+  .delete {
+    width: 30%;
     height: 25px;
-    margin:10px;
+    margin: 10px;
     border: none;
     background: rgb(182, 100, 90);
     border-radius: 28px;
     font-size: 10px;
-}
-.edit{
-    width:30%;
+  }
+
+  .edit {
+    width: 30%;
     height: 25px;
-    margin:10px;
+    margin: 10px;
     border: none;
     background: #d5e97b;
     border-radius: 28px;
     font-size: 10px;
 
-}
-.delete:hover{
-    width:35%;
+  }
+
+  .delete:hover {
+    width: 35%;
     height: 35px;
     margin: 0;
     border: none;
     background: rgb(255, 51, 0);
     border-radius: 28px;
-}
-.edit:hover{
-    width:35%;
+  }
+
+  .edit:hover {
+    width: 35%;
     height: 35px;
     margin: 0;
     border: none;
     background: rgb(9, 255, 0);
     border-radius: 28px;
-}
+  }
 
-.details-desc{
+  .details-desc {
     margin-top: 20px;
-    border-left:1px solid black;
+    border-left: 1px solid black;
     font-size: 8px;
     color: rgb(83, 83, 83);
-    padding:15px 60px 10px 15px;
-}
+    padding: 15px 60px 10px 15px;
+  }
 }

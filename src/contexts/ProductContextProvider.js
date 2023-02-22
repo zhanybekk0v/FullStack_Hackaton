@@ -8,7 +8,6 @@ export const useProduct = () => useContext(productContext)
 
 const INIT_STATE = {
   products: [],
-  post: 0,
   categories: [],
   oneProduct: {}
 }
@@ -16,11 +15,11 @@ const INIT_STATE = {
 function reducer(state = INIT_STATE, action) {
   switch (action.type) {
     case "GET_PRODUCTS":
-      return { ...state, products: action.payload.results }
+      return { ...state, products: action.payload }
     case "GET_CATEGORIES":
       return { ...state, categories: action.payload }
-      case "GET_ONE_PRODUCT" :
-        return {...state, oneProduct: action.payload}
+    case "GET_ONE_PRODUCT":
+      return { ...state, oneProduct: action.payload }
     default:
       return state;
   }
@@ -40,7 +39,7 @@ const ProductContextProvider = ({ children }) => {
       };
 
       const res = await axios.get(`${API}/products/${window.location.search} `, config)
-      dispatch({type: "GET_PRODUCTS", payload: res.data})
+      dispatch({ type: "GET_PRODUCTS", payload: res.data })
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -51,7 +50,7 @@ const ProductContextProvider = ({ children }) => {
   }
 
   const getCategories = async () => {
-    
+
     try {
       const tokens = JSON.parse(localStorage.getItem('tokens'));
       const Authorization = `Bearer ${tokens.access}`;
@@ -89,7 +88,6 @@ const ProductContextProvider = ({ children }) => {
 
       const res = await axios.post(`${API}/products/`, newProduct, config)
       console.log(res);
-
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -100,7 +98,7 @@ const ProductContextProvider = ({ children }) => {
   }
 
   async function getOneProduct(id) {
-    try{
+    try {
       const tokens = JSON.parse(localStorage.getItem('tokens'));
       const Authorization = `Bearer ${tokens.access}`;
 
@@ -110,8 +108,8 @@ const ProductContextProvider = ({ children }) => {
         },
       };
       const res = await axios.get(`${API}/products/${id}`, config)
-      dispatch({type:'GET_ONE_PRODUCT', payload: res.data })
-    }  catch (error) {
+      dispatch({ type: 'GET_ONE_PRODUCT', payload: res.data })
+    } catch (error) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -122,15 +120,16 @@ const ProductContextProvider = ({ children }) => {
 
 
 
-  const values = { 
-    getProducts, 
-    products: state.products, 
-    getCategories, 
+  const values = {
+    getProducts,
+    products: state.products,
+    post: state.post,
+    getCategories,
     categories: state.categories,
     addProduct,
     getOneProduct,
-    oneProduct: state.oneProduct
-   }
+    oneProduct: state.oneProduct,
+  }
   return (
     <productContext.Provider value={values}>
       {

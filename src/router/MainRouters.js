@@ -12,6 +12,7 @@ import EditProduct from '../components/Product/EditProduct'
 import LoaderLoading from "../Loader/LoaderLoading";
 import AddProduct from "../components/Product/AddProduct";
 import ProductDetailsPage from "../pages/ProductDetailsPage";
+import Cart from "../Cart/Cart";
 
 const MainRouters = () => {
   const PUBLIC_ROUTES = [
@@ -80,6 +81,7 @@ const MainRouters = () => {
       element: <ProductDetailsPage />,
       id: 10
     }
+   
   ];
 
   return (
