@@ -12,8 +12,9 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import { useProduct } from "../../contexts/ProductContextProvider";
-import Footer from "../../Footer/Footer";
 
 const AddProduct = () => {
   const [title, setTitle] = useState('')
@@ -46,8 +47,15 @@ const AddProduct = () => {
     console.log(newProduct)
     addProduct(newProduct)
   }
-
-  console.log(category);
+const navigate = useNavigate()
+  function loading() {
+    Swal.fire({
+      icon: "success",
+      title: "Success",
+      text: "Товар успешно добавлен!",
+    });
+    navigate('/products')
+  }
 
   return (
     <>
@@ -168,12 +176,10 @@ const AddProduct = () => {
             <MenuItem value='unisex'>Юнисекс</MenuItem>
           </Select>
         </FormControl>
-        <Button onClick={handleSave} variant="text" fullWidth size="large">
+        <Button onClick={() => {handleSave() ; loading()}} variant="text" fullWidth size="large">
           CREATE PRODUCT
         </Button>
-      </Box>
-      <Footer />
-      
+      </Box>      
     </>
   );
 };

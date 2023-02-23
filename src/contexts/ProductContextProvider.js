@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { createContext, useContext, useReducer } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { API } from '../helpers/consts'
 
@@ -39,6 +40,7 @@ const ProductContextProvider = ({ children }) => {
       };
 
       const res = await axios.get(`${API}/products/${window.location.search} `, config)
+      console.log(window.location.search);
       dispatch({ type: "GET_PRODUCTS", payload: res.data })
     } catch (error) {
       Swal.fire({
@@ -117,8 +119,20 @@ const ProductContextProvider = ({ children }) => {
       })
     }
   }
+  const location = useLocation()
+  const navigate = useNavigate()
+  const fetchByParams = async (query, value) => {
+    const search = new URLSearchParams(location.search);
+    if (value === 'all') {
+      search.delete(query);
+    } else {
+      search.set(query, value);
+    }
 
+    const url = `${location.pathname}?${search.toString()}`;
 
+    navigate(url);
+  };
 
   const values = {
     getProducts,
@@ -129,6 +143,7 @@ const ProductContextProvider = ({ children }) => {
     addProduct,
     getOneProduct,
     oneProduct: state.oneProduct,
+    fetchByParams
   }
   return (
     <productContext.Provider value={values}>

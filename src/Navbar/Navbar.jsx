@@ -16,6 +16,9 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContextProvider";
+import { useCart } from "../contexts/CartContextProvider";
+import { getCountProductsInCart } from "../helpers/function";
+import { useProduct } from "../contexts/ProductContextProvider";
 
 
 const pages = [
@@ -70,12 +73,23 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function Navbar() {
   const { user, checkAuth , handleLogOut} = useAuth()
   const navigate = useNavigate()
+  const [count , setCount] = React.useState(0)
+  const {addBookToCart} = useCart()
+  const {getProducts}  = useProduct()
+
+
+
+
 
   React.useEffect(() => {
     if (localStorage.getItem('tokens')) {
       checkAuth()
     }
   }, [])
+
+  React.useEffect(() => {
+    setCount(getCountProductsInCart)
+  }, [addBookToCart])
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEm, setAnchorEm] = React.useState(null)
@@ -191,7 +205,9 @@ export default function Navbar() {
             aria-haspopup="true"
             color="inherit"
           >
+            <Badge  color='primary' badgeContent={count}>
             <LocalGroceryStoreIcon />
+            </Badge>
           </IconButton>
           <p>Cart</p>
         </MenuItem>
@@ -271,11 +287,11 @@ export default function Navbar() {
                 aria-label="show 4 new mails"
                 color="inherit"
               >
-                <Badge color="error">
                   <Link to='/cart'>
+                <Badge color="error" badgeContent={count}>
                     <LocalGroceryStoreIcon />
-                  </Link>
                 </Badge>
+                  </Link>
               </IconButton>
               <IconButton
                 size="large"

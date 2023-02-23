@@ -5,6 +5,7 @@ import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useCart } from "../../contexts/CartContextProvider";
 import Header from "../../Header/Header";
+import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 
 const ProductCard = ({item}) => {
   const {addProductToCart, checkProductInCart} =useCart()
@@ -21,9 +22,11 @@ const ProductCard = ({item}) => {
                   </div>
                       </Link>
                   <div class="product-btns">
-                    <button type="button" class="btn-cart" onClick={() => addProductToCart(item)}>
+                    
+                    <button type="button" class="btn-cart" onClick={() => addProductToCart(item)   }>
                       {" "}
                       add to cart
+                      <LocalGroceryStoreIcon  size="large" color={checkProductInCart(item.id) ? 'primary' : 'black'} />
                       <span>
                         <i class="fas fa-plus"></i>
                       </span>
