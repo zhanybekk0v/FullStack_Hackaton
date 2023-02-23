@@ -7,7 +7,7 @@ import '../Header/Header.css'
 const Header = () => {
   const {getProducts } = useProduct()
   const [searchParams, setSearchParams] = useSearchParams()
-  const [search, setSearch] = useState(searchParams.get('search' || ""))
+  const [search, setSearch] = useState(searchParams.get('search' || ''))
 
   useEffect(() => {
     setSearchParams({

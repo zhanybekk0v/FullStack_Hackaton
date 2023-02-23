@@ -34,7 +34,6 @@ const AddProduct = () => {
   useEffect(() => {
     getCategories();
   }, []);
-  const navigate = useNavigate();
 
   function handleSave() {
     let newProduct = new FormData();
@@ -61,8 +60,7 @@ const navigate = useNavigate()
     navigate('/products')
   }
 
-  return (
-    <>
+  return <>
       <Box sx={{ width: "70vw", margin: "6vh auto", paddingTop: "5rem" }}>
         <Typography
           sx={{ marginBottom: "20px", color: "orange" }}
@@ -196,12 +194,13 @@ const navigate = useNavigate()
                 <MenuItem value="unisex">Юнисекс</MenuItem>
               </Select>
             </FormControl>
+            </div>
+            </div>
         <Button onClick={() => {handleSave() ; loading()}} variant="text" fullWidth size="large">
           CREATE PRODUCT
         </Button>
-      </Box>      
-    </>
-  );
+      </Box>  
+      </>
 };
 
 export default AddProduct;

@@ -12,24 +12,29 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import { useProduct } from "../../contexts/ProductContextProvider";
-import Footer from "../../Footer/Footer";
 import "../Product/AddProduct.css";
 
 
 const EditProduct = () => {
   const { getCategories, categories, getOneProduct, oneProduct, editProduct } =
     useProduct();
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [price, setPrice] = useState(0);
+    const [category, setCategory] = useState("");
+    const [image, setImage] = useState("");
+    const [brand, setBrand] = useState();
+    const [stock, setStock] = useState("");
+    const [sex, setSex] = useState("");
+    const [preview, setPreview] = useState("");
 
   const navigate = useNavigate();
 
   const { id } = useParams();
 
-  useEffect(() => {
-    getCategories();
-    getOneProduct(id);
-  }, []);
+ 
 
   useEffect(() => {
     if (oneProduct) {
@@ -43,15 +48,12 @@ const EditProduct = () => {
     }
   }, [oneProduct]);
 
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState(0);
-  const [category, setCategory] = useState("");
-  const [image, setImage] = useState("");
-  const [brand, setBrand] = useState();
-  const [stock, setStock] = useState("");
-  const [sex, setSex] = useState("");
-  const [preview, setPreview] = useState("");
+  useEffect(() => {
+    getOneProduct(id);  
+    getCategories();
+  }, []);
+
+
 
   function handleSave() {
     let newProduct = new FormData();
@@ -64,7 +66,7 @@ const EditProduct = () => {
     newProduct.append("stock", stock);
     newProduct.append("preview", preview);
     newProduct.append("sex", sex);
-    editProduct(newProduct);
+    editProduct(id, newProduct);
     navigate("/products");
   }
 
