@@ -116,18 +116,12 @@
   color: white;
 }
 
-.btn-cart:hover {
-  background: var(--carribean-green);
-}
 
 .btn-buy {
   background: white;
 }
 
-.btn-buy:hover {
-  background: var(--carribean-green);
-  color: #fff;
-}
+
 
 .product-info {
   background: white;

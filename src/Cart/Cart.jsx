@@ -75,7 +75,7 @@ export default function Cart() {
                 {row.subPrice}
               </TableCell>
               <TableCell align="center" color='primary'>
-                <button onClick={() => deleteProductInCart(row.item.id)} style={{ padding: '5px 20px', borderRadius: 10, border: 'none', color: 'white', backgroundColor: 'red' }} >Delete</button>
+                <button onClick={() => deleteProductInCart(row.item.id)} style={{ padding: '5px 20px', borderRadius: 10, border: 'none', color: 'white', backgroundColor: 'red' }} >X</button>
               </TableCell>
 
             </TableRow>
