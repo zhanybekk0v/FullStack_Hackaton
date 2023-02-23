@@ -38,8 +38,8 @@ const ProductContextProvider = ({ children }) => {
         },
       };
 
-      const res = await axios.get(`${API}/products/${window.location.search} `, config)
-      console.log(window.location.search);
+      const res = await axios.get(`${API}/products/${window.location.search}`, config)
+      console.log(window.location);
       dispatch({ type: "GET_PRODUCTS", payload: res.data })
     } catch (error) {
       Swal.fire({
@@ -176,6 +176,7 @@ const ProductContextProvider = ({ children }) => {
         text: error,
       });
     }
+  }
     
   const values = {
     getProducts,

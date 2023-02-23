@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../../contexts/CartContextProvider";
 import "./ProductDetailsCard.css";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { Grid, TextField, Typography } from "@mui/material";
@@ -9,10 +8,12 @@ import { Box } from "@mui/system";
 import { useAuth } from "../../contexts/AuthContextProvider";
 import { ADMIN } from "../../helpers/consts";
 import { useProduct } from "../../contexts/ProductContextProvider";
+import { useCart } from "../../contexts/CartContextProvider";
+ 
 
 const ProductDetailsCard = ({ product }) => {
   const { deleteProduct } = useProduct();
-  // const {addProductToCart,checkProductInCart } = useCart()
+  const {addProductToCart,checkProductInCart } = useCart()
   const navigate = useNavigate();
   const [fildback, setFildback] = useState("");
   const { user } = useAuth();
@@ -35,14 +36,14 @@ const ProductDetailsCard = ({ product }) => {
           </div>
 
           <div className="btn-group">
-            <button type="button" class="btn_cart">
+            <button onClick={() => addProductToCart(product)} type="button" class="btn_cart">
               {" "}
               add to cart{" "}
               <span>
                 <i class="fas fa-plus"></i>
               </span>
             </button>
-            <button type="button" class="btn_buy">
+            <button onClick={() => navigate('/orderForm')} type="button" class="btn_buy">
               {" "}
               buy now{" "}
               <span>
