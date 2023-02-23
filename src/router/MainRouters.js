@@ -6,9 +6,9 @@ import CartPage from "../pages/CartPage";
 import HomePage from "../pages/HomePage";
 import NotFoundPage from "../pages/NotFoundPage";
 import ProductsPage from "../pages/ProductsPage";
-import Login from '../Auth/Login'
-import Register from '../Auth/Register'
-import EditProduct from '../components/Product/EditProduct'
+import Login from "../Auth/Login";
+import Register from "../Auth/Register";
+import EditProduct from "../components/Product/EditProduct";
 import LoaderLoading from "../Loader/LoaderLoading";
 import AddProduct from "../components/Product/AddProduct";
 import ProductDetailsPage from "../pages/ProductDetailsPage";
@@ -50,51 +50,50 @@ const MainRouters = () => {
     {
       link: "/login",
       element: <Login />,
-      id: 7
+      id: 7,
     },
     {
-      link: '/register',
+      link: "/register",
       element: <Register />,
-      id: 8
+      id: 8,
     },
     {
-      link: '/edit/:id',
+      link: "/edit/:id",
       element: <EditProduct />,
-      id: 9
+      id: 9,
     },
     {
-      link:'/add' ,
+      link: "/add",
       element: <AddProduct />,
-      id: 10
+      id: 10,
     },
     {
       link: "/login",
       element: <Login />,
-      id: 7
+      id: 11,
     },
     {
-      link: '/register',
+      link: "/register",
       element: <Register />,
-      id: 8
+      id: 12,
     },
     {
-      link: '/details/:id',
+      link: "/details/:id",
       element: <ProductDetailsPage />,
-      id: 10
+      id: 13,
     },
     {
       link: '/orderForm',
       element: <OrderFormPage />,
-      id: 11
+      id: 14
     }
-   
   ];
 
   return (
     <>
       <Routes>
         {PUBLIC_ROUTES.map((item) => (
-          <Route  path={item.link} element={item.element} key={item.id} />
+          <Route path={item.link} element={item.element} key={item.id} />
         ))}
       </Routes>
     </>

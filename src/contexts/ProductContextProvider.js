@@ -3,35 +3,34 @@ import React, { createContext, useContext, useReducer } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { API } from '../helpers/consts'
-
-export const productContext = createContext()
-export const useProduct = () => useContext(productContext)
+export const productContext = createContext();
+export const useProduct = () => useContext(productContext);
 
 const INIT_STATE = {
   products: [],
   categories: [],
-  oneProduct: {}
-}
+  oneProduct: {},
+};
 
 function reducer(state = INIT_STATE, action) {
   switch (action.type) {
     case "GET_PRODUCTS":
-      return { ...state, products: action.payload }
+      return { ...state, products: action.payload };
     case "GET_CATEGORIES":
-      return { ...state, categories: action.payload }
+      return { ...state, categories: action.payload };
     case "GET_ONE_PRODUCT":
-      return { ...state, oneProduct: action.payload }
+      return { ...state, oneProduct: action.payload };
     default:
       return state;
   }
 }
 
 const ProductContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, INIT_STATE)
+  const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
   const getProducts = async () => {
     try {
-      const tokens = JSON.parse(localStorage.getItem('tokens'));
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
       const Authorization = `Bearer ${tokens.access}`;
       const config = {
         headers: {
@@ -44,17 +43,16 @@ const ProductContextProvider = ({ children }) => {
       dispatch({ type: "GET_PRODUCTS", payload: res.data })
     } catch (error) {
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
+        icon: "error",
+        title: "Oops...",
         text: error,
-      })
+      });
     }
-  }
+  };
 
   const getCategories = async () => {
-
     try {
-      const tokens = JSON.parse(localStorage.getItem('tokens'));
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
       const Authorization = `Bearer ${tokens.access}`;
 
       const config = {
@@ -65,21 +63,21 @@ const ProductContextProvider = ({ children }) => {
       const res = await axios.get(`${API}/categories/`, config);
 
       dispatch({
-        type: 'GET_CATEGORIES', payload: res.data
-      })
-
+        type: "GET_CATEGORIES",
+        payload: res.data,
+      });
     } catch (error) {
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
+        icon: "error",
+        title: "Oops...",
         text: error,
-      })
+      });
     }
   };
 
   async function addProduct(newProduct) {
     try {
-      const tokens = JSON.parse(localStorage.getItem('tokens'));
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
       const Authorization = `Bearer ${tokens.access}`;
 
       const config = {
@@ -88,20 +86,20 @@ const ProductContextProvider = ({ children }) => {
         },
       };
 
-      const res = await axios.post(`${API}/products/`, newProduct, config)
+      const res = await axios.post(`${API}/products/`, newProduct, config);
       console.log(res);
     } catch (error) {
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
+        icon: "error",
+        title: "Oops...",
         text: error,
-      })
+      });
     }
   }
 
   async function getOneProduct(id) {
     try {
-      const tokens = JSON.parse(localStorage.getItem('tokens'));
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
       const Authorization = `Bearer ${tokens.access}`;
 
       const config = {
@@ -109,14 +107,14 @@ const ProductContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      const res = await axios.get(`${API}/products/${id}`, config)
-      dispatch({ type: 'GET_ONE_PRODUCT', payload: res.data })
+      const res = await axios.get(`${API}/products/${id}`, config);
+      dispatch({ type: "GET_ONE_PRODUCT", payload: res.data });
     } catch (error) {
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
+        icon: "error",
+        title: "Oops...",
         text: error,
-      })
+      });
     }
   }
   const location = useLocation()
@@ -129,11 +127,56 @@ const ProductContextProvider = ({ children }) => {
       search.set(query, value);
     }
 
+ 
     const url = `${location.pathname}?${search.toString()}`;
 
     navigate(url);
   };
+ async function deleteProduct(id) {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
 
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      await axios.delete(`${API}/products/${id}/`, config);
+      getProducts();
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: error,
+      });
+    }
+  }
+
+  const editProduct = async (id, editedProduct) => {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const Authorization = `Bearer ${tokens.access}`;
+
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+
+      const res = await axios.patch(
+        `${API}/products/${id}/`,
+        editedProduct,
+        config
+      );
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: error,
+      });
+    }
+    
   const values = {
     getProducts,
     products: state.products,
@@ -143,15 +186,13 @@ const ProductContextProvider = ({ children }) => {
     addProduct,
     getOneProduct,
     oneProduct: state.oneProduct,
+    deleteProduct,
+    editProduct,
     fetchByParams
   }
   return (
-    <productContext.Provider value={values}>
-      {
-        children
-      }
-    </productContext.Provider>
-  )
-}
+    <productContext.Provider value={values}>{children}</productContext.Provider>
+  );
+};
 
-export default ProductContextProvider
+export default ProductContextProvider;

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useProduct } from "../../contexts/ProductContextProvider";
 import Header from "../../Header/Header";
+
 import SideBar from "../../SideBar/SideBar";
 import ProductCard from '../Product/ProductCard'
 
@@ -12,26 +13,28 @@ const ProductList = () => {
   const [searhParams, setSearchParams] = useSearchParams()
 
   useEffect(() => {
-    getProducts()
-    setPage(1)
-  }, [setSearchParams])
+    getProducts();
+    setPage(1);
+  }, [setSearchParams]);
 
   useEffect(() => {
     getProducts();
   }, []);
 
+
   const [page, setPage] = useState(1)
   const itemsPerPage = 8
   const count = Math.ceil(products.length / itemsPerPage)
   const handleChange = (e, p) => {
-    setPage(p)
-  }
+    setPage(p);
+  };
 
   function currentData() {
     const begin = (page - 1) * itemsPerPage;
     const end = begin + itemsPerPage;
-    return products.slice(begin, end)
+    return products.slice(begin, end);
   }
+
   return <>
     <Grid sx={{ paddingTop: '3rem' }}>
       <Header />
