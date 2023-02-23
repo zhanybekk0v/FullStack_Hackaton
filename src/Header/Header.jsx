@@ -1,10 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom';
 import { about_stats } from '../contants/data'
+import { useProduct } from '../contexts/ProductContextProvider';
 import '../Header/Header.css'
 
 const Header = () => {
+  const {getProducts } = useProduct()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [search, setSearch] = useState(searchParams.get('search' || ""))
+
+  useEffect(() => {
+    setSearchParams({
+      search: search,
+    })
+    getProducts()
+  } ,[search])
+
   return (
-    <div>
+    <div style={{marginBottom: '50px'}}>
       <div className='header-container'>
         <div className="wrapper">
           <div className="header__bg-img">
@@ -18,11 +31,11 @@ const Header = () => {
               </button>
             </div>
             <div className="header__inp">
-              <input type="text" className='inp-search' placeholder='Поищите что-то интересное...' />
+              <input value={search} onChange={(e) => setSearch(e.target.value)} type="text" className='inp-search' placeholder='Поищите что-то интересное...' />
               <button className='inp-btn'>Search</button>
             </div>
-            <div className='header-descr'>
-              <p>Интернет-маагазин предоставляет самые лучшие услуги, доставку быстро и безопасно!</p>
+            <div >
+              <p className='header-descr'>Интернет-маагазин предоставляет самые лучшие услуги, доставку быстро и безопасно!</p>
             </div>
         </div>
         <div className='about-grid'>

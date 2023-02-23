@@ -17,6 +17,7 @@ import { useProduct } from "../../contexts/ProductContextProvider";
 import Footer from "../../Footer/Footer";
 import "../Product/AddProduct.css";
 
+
 const EditProduct = () => {
   const { getCategories, categories, getOneProduct, oneProduct, editProduct } =
     useProduct();
@@ -210,7 +211,7 @@ const EditProduct = () => {
           SAVE
         </Button>
       </Box>
-      <Footer />
+
     </>
   );
 };

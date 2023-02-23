@@ -13,6 +13,7 @@ import LoaderLoading from "../Loader/LoaderLoading";
 import AddProduct from "../components/Product/AddProduct";
 import ProductDetailsPage from "../pages/ProductDetailsPage";
 import Cart from "../Cart/Cart";
+import OrderFormPage from "../pages/OrderFormPage";
 
 const MainRouters = () => {
   const PUBLIC_ROUTES = [
@@ -81,6 +82,11 @@ const MainRouters = () => {
       element: <ProductDetailsPage />,
       id: 13,
     },
+    {
+      link: '/orderForm',
+      element: <OrderFormPage />,
+      id: 14
+    }
   ];
 
   return (

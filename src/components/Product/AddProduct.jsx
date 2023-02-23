@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { useProduct } from "../../contexts/ProductContextProvider";
 import Footer from "../../Footer/Footer";
 import "./AddProduct.css";
+import Swal from "sweetalert2";
 
 const AddProduct = () => {
   const [title, setTitle] = useState("");
@@ -50,8 +51,15 @@ const AddProduct = () => {
     addProduct(newProduct);
     navigate("/products");
   }
-
-  console.log(category);
+const navigate = useNavigate()
+  function loading() {
+    Swal.fire({
+      icon: "success",
+      title: "Success",
+      text: "Товар успешно добавлен!",
+    });
+    navigate('/products')
+  }
 
   return (
     <>
@@ -188,13 +196,10 @@ const AddProduct = () => {
                 <MenuItem value="unisex">Юнисекс</MenuItem>
               </Select>
             </FormControl>
-          </div>
-        </div>
-        <Button onClick={handleSave} variant="text" fullWidth size="large">
+        <Button onClick={() => {handleSave() ; loading()}} variant="text" fullWidth size="large">
           CREATE PRODUCT
         </Button>
-      </Box>
-      <Footer />
+      </Box>      
     </>
   );
 };

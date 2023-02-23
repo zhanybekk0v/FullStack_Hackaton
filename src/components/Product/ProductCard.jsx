@@ -8,10 +8,11 @@ import Header from "../../Header/Header";
 import { useProduct } from "../../contexts/ProductContextProvider";
 import { ADMIN } from "../../helpers/consts";
 import { useAuth } from "../../contexts/AuthContextProvider";
+import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 
-const ProductCard = ({ item }) => {
-  const { addProductToCart, checkProductInCart } = useCart();
+const ProductCard = ({item}) => {
   const { user } = useAuth();
+  const {addProductToCart, checkProductInCart} =useCart()
 
   return (
     <>
